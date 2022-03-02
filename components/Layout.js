@@ -1,31 +1,18 @@
 import Link from "next/link";
 import { useState } from "react";
+import WidthLimiter from "./WidthLimiter";
 
 export default function Layout ({ children }) {
   const [mobileIsHidden, setMobileIsHidden] = useState(true)
-  const [navHidden, setNavHidden] = useState(true)
-  const [burgerHidden, setBurgerHidden] = useState(false)
-  const [closeHidden, setCloseHidden] = useState(true)
+  
   // called when mobile menu toggle is clicked
   const handleMobileClick = () => {
     if (false == mobileIsHidden) {
       // menu is open (want to close menu)
-      // hide menu 
-      setNavHidden(true)
-      // show burger
-      setBurgerHidden(false)
-      // hide close
-      setCloseHidden(true)
       // set mobile menu to hidden
       setMobileIsHidden(true)
     } else {
       // menu is closed (want to open menu)
-      // show menu
-      setNavHidden(false)
-      // hide burger
-      setBurgerHidden(true)
-      // show close
-      setCloseHidden(false)
       // set mobile menu to shown
       setMobileIsHidden(false)
     }
@@ -35,7 +22,7 @@ export default function Layout ({ children }) {
       {/* navbar */}
       <nav className="font-title bg-violet-500 text-[24px]">
         {/* width limiter */}
-        <div className="lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[100rem] mx-auto p-8">
+        <WidthLimiter paddingAll={ true }>
           {/* flexbox */}
           <div className="flex flex-col sm:flex-row items-center justify-between">
             {/* left */}
@@ -47,10 +34,10 @@ export default function Layout ({ children }) {
               {/* hamburger */}
               <div className="sm:hidden">
                 <button onClick={handleMobileClick}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className={ burgerHidden ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className={ (false == mobileIsHidden) ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" className={ closeHidden ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className={ (true == mobileIsHidden) ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
@@ -58,7 +45,7 @@ export default function Layout ({ children }) {
             </div>            
 
             {/* right */}
-            <div className={ navHidden ? "hidden sm:flex flex-row items-center space-x-8" : "sm:flex flex-col sm:flex-row items-center w-full sm:w-fit sm:space-x-8 text-center" }>
+            <div className={ (true == mobileIsHidden) ? "hidden sm:flex flex-row items-center space-x-8" : "sm:flex flex-col sm:flex-row items-center w-full sm:w-fit sm:space-x-8 text-center" }>
               {/* services */}
               <div className="group relative rounded-lg sm:hover:bg-teal-500 text-teal-50 py-2 px-3">
                 <div>
@@ -103,7 +90,7 @@ export default function Layout ({ children }) {
             </div>
 
           </div>
-        </div>
+        </WidthLimiter>
       </nav>
 
       {/* content */}
@@ -114,7 +101,7 @@ export default function Layout ({ children }) {
       {/* footer */}
       <footer className="font-rubik bg-violet-700">
         {/* width limiter */}
-        <div className="lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[100rem] mx-auto p-8">
+        <WidthLimiter paddingAll={ true }>
           {/* flex */}
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 justify-between items-center">
             {/* mailing list */}
@@ -153,7 +140,7 @@ export default function Layout ({ children }) {
 
             </div>
           </div>
-        </div>
+        </WidthLimiter>
       </footer>
     </div>
   )
