@@ -1,21 +1,33 @@
 import Link from "next/link";
-import { useRef } from "react";
+import { useState } from "react";
 
 export default function Layout ({ children }) {
-
+  const [mobileIsHidden, setMobileIsHidden] = useState(true)
+  const [navHidden, setNavHidden] = useState(true)
+  const [burgerHidden, setBurgerHidden] = useState(false)
+  const [closeHidden, setCloseHidden] = useState(true)
+  // called when mobile menu toggle is clicked
   const handleMobileClick = () => {
-    if (document.getElementById("m-burger-svg").classList.contains("hidden")) {
-      // menu is open
-      // hide menu and show burger
-      document.getElementById("nav-links").classList.add("hidden")
-      document.getElementById("m-burger-svg").classList.remove("hidden")
-      document.getElementById("m-close-svg").classList.add("hidden")
+    if (false == mobileIsHidden) {
+      // menu is open (want to close menu)
+      // hide menu 
+      setNavHidden(true)
+      // show burger
+      setBurgerHidden(false)
+      // hide close
+      setCloseHidden(true)
+      // set mobile menu to hidden
+      setMobileIsHidden(true)
     } else {
-      // menu is closed
-      // show menu and hide burger
-      document.getElementById("nav-links").classList.remove("hidden")
-      document.getElementById("m-burger-svg").classList.add("hidden")
-      document.getElementById("m-close-svg").classList.remove("hidden")
+      // menu is closed (want to open menu)
+      // show menu
+      setNavHidden(false)
+      // hide burger
+      setBurgerHidden(true)
+      // show close
+      setCloseHidden(false)
+      // set mobile menu to shown
+      setMobileIsHidden(false)
     }
   }
   return (
@@ -35,10 +47,10 @@ export default function Layout ({ children }) {
               {/* hamburger */}
               <div className="sm:hidden">
                 <button onClick={handleMobileClick}>
-                  <svg xmlns="http://www.w3.org/2000/svg" id="m-burger-svg" class="h-6 w-6 text-teal-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class={ burgerHidden ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" id="m-close-svg" class="hidden h-6 w-6 text-teal-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" class={ closeHidden ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
@@ -46,7 +58,7 @@ export default function Layout ({ children }) {
             </div>            
 
             {/* right */}
-            <div id="nav-links" className="hidden sm:flex flex-col sm:flex-row items-center w-full sm:w-fit sm:space-x-8 text-center">
+            <div className={ navHidden ? "hidden sm:flex flex-row items-center space-x-8" : "sm:flex flex-col sm:flex-row items-center w-full sm:w-fit sm:space-x-8 text-center" }>
               {/* services */}
               <div className="group relative rounded-lg sm:hover:bg-teal-500 text-teal-50 py-2 px-3">
                 <div>
@@ -66,7 +78,7 @@ export default function Layout ({ children }) {
                   </div>
                 </div>
                 {/* service sub-pages */}
-                <div className="sm:absolute top-full left-[9px] hidden text-center sm:text-left group-focus-within:flex sm:group-hover:flex flex-col pt-1 sm:pt-0 pb-1 sm:pb-0 sm:border-b-2 border-teal-400 text-[22px] sm:text-[20px]">
+                <div className="sm:absolute z-10 top-full inset-x-3 hidden text-center sm:text-left group-focus-within:flex sm:group-hover:flex flex-col pt-1 sm:pt-0 pb-1 sm:pb-0 sm:border-b-2 border-teal-400 text-[22px] sm:text-[20px]">
                   <Link href="#"><a className="sm:hidden px-3 py-2">All services</a></Link>
                   <Link href="#"><a className="sm:bg-teal-50 sm:hover:bg-teal-500 sm:text-teal-500 sm:hover:text-teal-50 px-3 py-2">Math</a></Link>
                   <Link href="#"><a className="sm:bg-teal-50 sm:hover:bg-teal-500 sm:text-teal-500 sm:hover:text-teal-50 px-3 py-2">English</a></Link>
