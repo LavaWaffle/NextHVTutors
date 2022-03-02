@@ -9,7 +9,7 @@ export default function ReviewCard({ data }) {
           { reviewText }
         </p>
         {/* author */}
-        <p before="-" className="text-teal-100 text-2xl text-bold text-right before:content-['\2014\0020']">
+        <p className="text-teal-100 text-2xl text-bold text-right before:content-['\2014\0020']">
           { author }
         </p>
       </div>

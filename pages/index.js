@@ -71,7 +71,7 @@ export default function Home({ thumbnails, reviews }) {
       {/* width limiter */}
       <div className="lg:max-w-5xl xl:max-w-7xl 2xl:max-w-[100rem] mx-auto px-8">
         {/* title */}
-        <div class="flex justify-center items-center">
+        <div className="flex justify-center items-center">
           <h1 className="text-teal-300 font-title text-4xl text-center font-bold mb-3">
             Reviews
           </h1>

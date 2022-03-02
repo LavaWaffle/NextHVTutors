@@ -31,7 +31,7 @@ export default function Layout ({ children }) {
     }
   }
   return (
-    <div class="bg-violet-900 h-screen">
+    <div className="bg-violet-900 h-screen">
       {/* navbar */}
       <nav className="font-title bg-violet-500 text-[24px]">
         {/* width limiter */}
@@ -39,7 +39,7 @@ export default function Layout ({ children }) {
           {/* flexbox */}
           <div className="flex flex-col sm:flex-row items-center justify-between">
             {/* left */}
-            <div class="flex justify-between items-center w-full">
+            <div className="flex justify-between items-center w-full">
               <Link href="/"><a>
                 logo  
               </a></Link>
@@ -47,11 +47,11 @@ export default function Layout ({ children }) {
               {/* hamburger */}
               <div className="sm:hidden">
                 <button onClick={handleMobileClick}>
-                  <svg xmlns="http://www.w3.org/2000/svg" class={ burgerHidden ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                  <svg xmlns="http://www.w3.org/2000/svg" className={ burgerHidden ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" class={ closeHidden ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  <svg xmlns="http://www.w3.org/2000/svg" className={ closeHidden ? "hidden" : "h-6 w-6 text-teal-50" } fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
@@ -65,15 +65,15 @@ export default function Layout ({ children }) {
                   {/* sm and above */}
                   <Link href="/services"><a className="hidden sm:inline-flex items-center gap-1">
                     Services
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:group-hover:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:group-hover:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </a></Link>
                   {/* mobile */}
                   <div className="inline-flex sm:hidden items-center gap-1">
                     <button>Services</button>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-focus-within:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 group-focus-within:rotate-180 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                   </div>
                 </div>
@@ -95,8 +95,8 @@ export default function Layout ({ children }) {
               <div className="rounded-lg sm:hover:bg-teal-500 text-teal-50 py-2 px-3">
                 <Link href="/cart"><a className="inline-flex items-center gap-1">
                   Cart
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </a></Link>
               </div>
@@ -123,8 +123,7 @@ export default function Layout ({ children }) {
               {/* onSubmit={handleEmailList} */}
               {/* https://dmitripavlutin.com/react-useref-guide/ */}
               <form className="flex w-full md:w-10/12 pt-4 md:pt-1" >
-                  <label for="fEmail"></label>
-                  <input id="email" type="email" autocomplete="email" className="form-control w-full rounded-l py-3 px-4 outline-none focus:bg-violet-100" placeholder="Email address" />
+                  <input id="email" type="email" className="form-control w-full rounded-l py-3 px-4 outline-none focus:bg-violet-100" placeholder="Email address" />
                   <button type="submit" className="bg-red-300 hover:bg-red-400 text-red-800 rounded-r px-4">Join</button>
               </form>
               
