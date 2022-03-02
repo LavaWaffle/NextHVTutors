@@ -10,6 +10,10 @@ module.exports = {
         'title': ['Anton'],
       },
     },
+    aspectRatio: {
+      '420/505' : '420 / 505',
+      '10/9': '10 / 9',
+    },
     ripple: theme => ({
       colors: theme('colors')
     }),
