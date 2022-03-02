@@ -44,7 +44,7 @@ export default function Home({ thumbnails, reviews }) {
           {/* left */}
           <div className="inline-flex flex-col items-center w-full sm:w-1/2">
             <h1 className="text-teal-300 font-title text-4xl text-center font-bold mb-3">Ace your next Test</h1>
-            <div className="rounded-xl overflow-hidden">
+            <div className="aspect-420/505 object-cover rounded-lg shadow-xl overflow-hidden">
               <Image 
                 src="/smallPerfect.png"
                 alt="Perfect Score Exam"
@@ -77,7 +77,11 @@ export default function Home({ thumbnails, reviews }) {
           </h1>
         </div>
         
-        <div className="before:content-['\201c'] before:absolute before:-top-[10%] before:left-[2%] before:text-violet-300 before:text-[250px] before:font-serif">
+        {/* open quote */}
+        <div className="before:content-['\201c'] before:absolute before:-top-[6%] before:left-[2%] before:text-violet-300 before:text-[250px] before:font-serif">
+        </div>
+        {/* close quote */}
+        <div className="before:content-['\201c'] before:absolute before:-bottom-[10%] sm:before:-bottom-[13%] before:right-[1%] before:text-violet-300 before:text-[250px] before:font-serif before:rotate-180">
         </div>
 
         {/* grid */}
